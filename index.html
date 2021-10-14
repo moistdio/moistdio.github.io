@@ -6,21 +6,37 @@
 </head>
 
 <body>
-
 <div id="particles-js"></div>
-
 <h1 class="centered font">Stay tuned!</h1>
+<div class="bg-music">
+    <audio id="beat" autoplay="autoplay" src="./music/Arkan45%20-%20Gargamel%20(prod.%20RGB1).mp3" loop></audio>
+    <button class="btn">
+        <i class="fa fa-play-circle-o"></i>
+        <i class="fa fa-pause-circle-o"></i>
+    </button>
+</div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://use.fontawesome.com/bdacd3afa7.js"></script>
 <script src="./js/particles.js"></script>
 <script src="./js/app.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $(".btn .fa-play-circle-o").on('click', function (){
+            $(this).hide();
+            $(".fa-pause-circle-o").fadeIn();
+            $("#beat").prop("volume", 0.1);
+            $("#beat")[0].play();
+        });
+        $(".btn .fa-pause-circle-o").on('click', function (){
+            $(this).hide();
+            $(".fa-play-circle-o").fadeIn();
+            $("#beat")[0].pause();
+        });
+    });
+</script>
 </body>
-
-<style>
-
-    /**@-webkit-keyframes moving {
-        0% {position: fixed;}
-        20% {left: 10px;}
-    }**/
-
-</style>
+<!--Muss nach dem Laden der Scripte hinzugefügt werden.-->
+<link rel="stylesheet" href="./Style/musicstyle.css">
 </html>

@@ -1,0 +1,27 @@
+/* ---- Music-Bar ---- */
+
+.bg-music{
+    position: absolute;
+    top: 60%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+
+.btn{
+    background-color: transparent;
+    color: #fff;
+    font-size: 78px;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    opacity: .3;
+}
+
+.fa-pause-circle-o{
+    display: none;
+}
+
+.btn:hover{
+    opacity: 1;
+}
