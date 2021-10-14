@@ -27,7 +27,7 @@ html{
     color: white;
     text-shadow: 10px 10px #000000;
     font-size: 8vw;
-    animation: moving 2s infinite linear;
+    animation: moving 5s infinite linear;
 }
 
 .centered{
@@ -38,23 +38,23 @@ html{
 }
 
 @keyframes moving {
-    0% {position: fixed;
+    0% {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);}
-    25% {position: fixed;
+    25% {
         top: 49%;
         left: 51%;
         transform: translate(-49%, -51%)rotate(-1deg)}
-    50% {position: fixed;
+    50% {
         top: 49%;
         left: 50%;
         transform: translate(-49%, -50%) rotate(-1deg);}
-    75% {position: fixed;
+    75% {
         top: 50%;
         left: 49%;
         transform: translate(-50%, -49%) rotate(1deg);}
-    100% {position: fixed;
+    100% {
         top: 50%;
         left:50%;
         transform: translate(-50%, -50%) rotate(0deg);}
