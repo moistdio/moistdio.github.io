@@ -37,19 +37,8 @@ text = document.createTextNode("Stay Tuned!");
 header.appendChild(text);
 body.appendChild(header);
 
-var beatcontent = {
-    src: './music/abr.mp3',
-    loop: ''
-}
-
 bg_music = document.createElement('div');
 bg_music.className = ("bg-music");
-audio = document.createElement('audio');
-audio.id = "beat";
-
-Object.entries(beatcontent).forEach(([k, v]) =>{
-    audio.setAttribute(k, v);
-})
 
 button = document.createElement('button');
 button.className = "btn";
@@ -63,7 +52,6 @@ pausecircle.className = "fa fa-pause-circle-o";
 button.appendChild(playcircle);
 button.appendChild(pausecircle);
 
-bg_music.appendChild(audio);
 bg_music.appendChild(button);
 
 body.appendChild(bg_music);
@@ -83,12 +71,3 @@ content.appendChild(br);
 content.appendChild(a);
 footer.appendChild(content);
 body.appendChild(footer);
-
-var js = ["https://use.fontawesome.com/bdacd3afa7.js", "./js/particles.js", "./js/app.js", "./js/playback.js"];
-
-js.forEach(k => {
-    script = document.createElement('script');
-    script.setAttribute('src', k);
-
-    body.appendChild(script);
-})
