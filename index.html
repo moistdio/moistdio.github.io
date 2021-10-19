@@ -8,16 +8,15 @@
 
 <body>
 <!-- Der Background für die gesamte Seite -->
-<video id="background" autoplay muted="muted" loop>
-        <source id="mp4" src="visuals/background-mp4.mp4" type="video/mp4">
-        <source id="webm" src="visuals/background.webm" type="video/webm">
+<video id="background" preload="none" brightness loop>
+        <source id="mp4" src="visuals/vid.mp4" type="video/mp4">
 </video>
 
 <!-- Ist für das Abbilden der Partikeln da -->
 <div id="particles-js"></div>
 
 <!-- Großer Text gecentert -->
-<h1 class="centered font">Stay tuned!</h1>
+<h1 id="header" class="centered font">Stay tuned!</h1>
 <!-- Musik-Player -->
 <div class="bg-music">
     <audio id="beat" src="./music/abr.mp3" loop></audio>
@@ -39,19 +38,55 @@
 <script src="./js/app.js"></script>
 
 <script type="text/javascript">
+    var timer;
+
     $(document).ready(function (){
         $(".btn .fa-play-circle-o").on('click', function (){
             $(this).hide();
             $(".fa-pause-circle-o").fadeIn();
-            $("#beat").prop("volume", 0.1);
-            $("#beat")[0].play();
+            $("#background").prop("volume", 0.1);
+            $("#background")[0].play();
         });
         $(".btn .fa-pause-circle-o").on('click', function (){
             $(this).hide();
             $(".fa-play-circle-o").fadeIn();
-            $("#beat")[0].pause();
+            $("#background")[0].pause();
         });
     });
+</script>
+
+<script>
+    var video = document.getElementById('background');
+    var hidden = false;
+
+    var timeout = function () {
+        hidden = true;
+        $('#header').fadeOut();
+        $('html').css({
+            cursor: 'none'
+        });
+        if(video.paused){
+            $('.fa-play-circle-o').fadeOut();
+        } else {
+            $('.fa-pause-circle-o').fadeOut();
+        }
+    }
+    timer = setTimeout(timeout, 5000);
+    window.onmousemove = function() {
+        if(hidden) {
+            $('#header').fadeIn();
+            $('html').css({
+                cursor: 'default'
+            });
+            if (video.paused && $('.fa-play-circle-o').is(':hidden') && $('.fa-pause-circle-o').is(':hidden')) {
+                $('.fa-play-circle-o').fadeIn();
+            } else if ($('.fa-play-circle-o').is(':hidden') && $('.fa-pause-circle-o').is(':hidden')) {
+                $('.fa-pause-circle-o').fadeIn();
+            }
+            clearTimeout(timer);
+            timer = setTimeout(timeout, 5000);
+        }
+    };
 </script>
 </body>
 <!--Muss nach dem Laden der Scripte hinzugefügt werden.-->
